@@ -3,7 +3,8 @@ const app = express();
 const bodyParser = require("body-parser");
 const userRouter = require("./routes/userRouter.js");
 const homeRouter = require("./routes/homeRouter.js");
-
+const expressHbs = require("express-handlebars");
+const hbs = require("hbs");
 
 app.engine("hbs", expressHbs({
     layoutsDir: "views/layouts",

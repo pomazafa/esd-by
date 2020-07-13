@@ -1,5 +1,5 @@
 exports.index = function (request, response) {
-    response.send("Главная страница");
+    response.render('about.hbs', {russian:true});
 };
 exports.about = function (request, response) {
     response.send("О сайте");

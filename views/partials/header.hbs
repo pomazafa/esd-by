@@ -1,3 +1,32 @@
 <header>
-    
+    <link rel="stylesheet" type="text/css" href="/static/css/header.css"/>
+    <div class="header">
+        <div class="inner_header">
+            <div class="logo_container">
+                <img src="/static/images/logo.png" alt="Главная">
+            </div>
+            {{#if russian}}
+                <nav>
+                <ul class="navigation">
+                    <a href="/about"><li>О нас</li></a>
+                    <a href="/catalog"><li>Новости</li></a>
+                    <a href="/contact"><li>События</li></a>
+                    <a href="/contact"><li>Программы</li></a>
+                    <a href="/contact"><li>Проекты</li></a>
+
+                    {{#unless login}}
+                    <a href="/entry"><li><span>Войти</span></li></a>
+                    {{else}}
+                    <a href="/exit"><li><span>Выйти</span></li></a>
+                    {{/unless}}
+
+                    {{!-- <a href="/contact"><li>Русский</li></a>
+                    <a href="/contact"><li>English</li></a> --}}
+                </ul>
+                </nav>
+            {{else}}
+        
+            {{/if}}
+        </div>
+    </div>
 </header>
