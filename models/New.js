@@ -6,7 +6,9 @@ module.exports = function(sequelize) {
         newDate: { type: Sequelize.DATE, allowNull: false },
         title: { type: Sequelize.STRING, allowNull: false },
         messageShort: { type: Sequelize.STRING, allowNull: true },
-        messageShort: { type: Sequelize.STRING, allowNull: true }
+        message: { type: Sequelize.STRING(2048), allowNull: false },
+        photoURL: { type: Sequelize.STRING, allowNull: true},
+        photoDescription: { type: Sequelize.STRING, allowNull: true }
     }, {
         sequelize,
         modelName: 'New',

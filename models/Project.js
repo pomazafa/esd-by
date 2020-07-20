@@ -8,7 +8,7 @@ module.exports = function(sequelize) {
         photoDescription: { type: Sequelize.STRING, allowNull: true },
         title: { type: Sequelize.STRING, allowNull: false },
         messageShort: { type: Sequelize.STRING, allowNull: true },
-        messageShort: { type: Sequelize.STRING, allowNull: true }
+        message: { type: Sequelize.STRING(2048), allowNull: true }
     }, {
         sequelize,
         modelName: 'Project',
