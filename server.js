@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const userRouter = require("./routes/userRouter.js");
 const homeRouter = require("./routes/homeRouter.js");
+const newRouter = require("./routes/newRouter.js");
 const expressHbs = require("express-handlebars");
 const hbs = require("hbs");
 const model = require('./models/model.js')
@@ -43,6 +44,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use("/users", userRouter);
 app.use("/", homeRouter);
+app.use("/news", newRouter);
 
 app.use(function (req, res, next) {
     res.status(404).send("Not Found");

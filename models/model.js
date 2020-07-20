@@ -6,7 +6,6 @@ const NewModel = require('./New.js');
 const PhotoModel = require('./Photo.js');
 const ProgramModel = require('./Program.js');
 const ProjectModel = require('./Project.js');
-const ReferenceModel = require('./Reference.js');
 const UserModel = require('./User.js');
 
 const sequelize = new Sequelize(process.env.CLEARDB_DATABASE_URL || `mysql://${Login}:${Password}@localhost:3306/${Database}`);
@@ -22,12 +21,10 @@ function models(sequelize) {
         New: NewModel(sequelize),
         Photo: PhotoModel(sequelize),
         Program: ProgramModel(sequelize),
-        Project: ProjectModel(sequelize),
-        Reference: ReferenceModel(sequelize)
+        Project: ProjectModel(sequelize)
     };
 
     model.Event.hasMany(model.Photo);
-    model.New.hasMany(model.Reference);
     
     return model;
 }
@@ -47,7 +44,6 @@ module.exports = {
         User,
         Photo,
         Program,
-        Project,
-        Reference
+        Project
     } =
     models(sequelize);
