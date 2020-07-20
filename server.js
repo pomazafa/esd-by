@@ -5,6 +5,7 @@ const userRouter = require("./routes/userRouter.js");
 const homeRouter = require("./routes/homeRouter.js");
 const expressHbs = require("express-handlebars");
 const hbs = require("hbs");
+const model = require('./models/model.js')
 
 app.engine("hbs", expressHbs({
     layoutsDir: "views/layouts",
