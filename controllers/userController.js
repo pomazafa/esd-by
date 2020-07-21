@@ -1,4 +1,4 @@
-const { User } = require("../models/user.js");
+const { User } = require('../models/model.js');
 const { secret } = require('../config/config.js');
 const verifyToken = require('../public/js/authenticate.js');
 const jwt = require('jsonwebtoken');
@@ -10,7 +10,7 @@ exports.index = async function(request, response) {
         response.redirect('/');
     } else {
         response.render("entry.hbs", {
-            title: 'Вход  | esd-by.org'
+            title: 'Вход  | esd-by.org', form: form
         });
     }
 };
@@ -30,7 +30,7 @@ exports.authenticate = async function(request, response) {
     })
     if (result === null) {
         form = {
-            name: username,
+            username: username,
             message: 'Пользователя с таким логином не существует'
         };
         response.redirect('/entry');
@@ -46,7 +46,7 @@ exports.authenticate = async function(request, response) {
             response.redirect('/');
         } else {
             form = {
-                name: username,
+                username: username,
                 message: 'Неверный пароль'
             };
             response.redirect('/entry');

@@ -6,7 +6,9 @@ const homeRouter = require("./routes/homeRouter.js");
 const newRouter = require("./routes/newRouter.js");
 const expressHbs = require("express-handlebars");
 const hbs = require("hbs");
-const model = require('./models/model.js')
+const cookieParser = require('cookie-parser');
+
+app.use(cookieParser());
 
 app.engine("hbs", expressHbs({
     layoutsDir: "views/layouts",
@@ -42,7 +44,7 @@ app.use(bodyParser.urlencoded({
 app.set("view engine", "hbs");
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use("/users", userRouter);
+app.use("/entry", userRouter);
 app.use("/", homeRouter);
 app.use("/news", newRouter);
 
