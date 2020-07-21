@@ -9,7 +9,7 @@ exports.index = async function(request, response) {
     if (await verifyToken(request, response)) {
         response.redirect('/');
     } else {
-        response.render("entry.hbs", {
+        response.render("login.hbs", {
             title: 'Вход  | esd-by.org', form: form
         });
     }
@@ -33,7 +33,7 @@ exports.authenticate = async function(request, response) {
             username: username,
             message: 'Пользователя с таким логином не существует'
         };
-        response.redirect('/entry');
+        response.redirect('/login');
     } else {
         const salt = result.passwordSalt;
         const passwordHash = crypto.createHash('sha512').update(`${userPassword}${salt}`).digest('hex');
@@ -49,7 +49,7 @@ exports.authenticate = async function(request, response) {
                 username: username,
                 message: 'Неверный пароль'
             };
-            response.redirect('/entry');
+            response.redirect('/login');
         }
     }
 };

@@ -44,7 +44,7 @@ app.use(bodyParser.urlencoded({
 app.set("view engine", "hbs");
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use("/entry", userRouter);
+app.use("/login", userRouter);
 app.use("/", homeRouter);
 app.use("/news", newRouter);
 
