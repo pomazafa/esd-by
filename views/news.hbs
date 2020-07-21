@@ -1,13 +1,17 @@
 <div>
-    {{#if News.0.id}}
-    {{#each News}}
-    <div>
-       <p> {{this.title}}</p>
-        <p>{{#formatTime this.newDate}}{{/formatTime}}</p>
-        <p>{{this.messageShort}}</p>
-     </div>
-    {{/each}}
+    {{#if isAdmin}}
+    <a href="/news/add">Добавить</a>
     {{else}}
-    <p>Новостей на данный момент нет. Зайдите позже</p>
+        {{#if News.0.id}}
+        {{#each News}}
+        <div>
+        <p> {{this.title}}</p>
+            <p>{{#formatTime this.newDate}}{{/formatTime}}</p>
+            <p>{{this.messageShort}}</p>
+        </div>
+        {{/each}}
+        {{else}}
+        <p>Новостей на данный момент нет. Зайдите позже</p>
+        {{/if}}
     {{/if}}
 </div>

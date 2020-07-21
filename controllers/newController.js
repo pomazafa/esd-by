@@ -3,7 +3,7 @@ exports.index = async function (request, response) {
     const lang = request.params.lang;
     if(lang.toLowerCase() == "en")
     {
-
+        response.send('english version would be later.........')
     }
     else
     {

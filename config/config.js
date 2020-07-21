@@ -1,7 +1,7 @@
 const path = require("path");
 
 module.exports = {
-    secret: 'SecretJWT',
+    secret: 'SecretESDorg',
     dbconf: {
         dialect: 'mysql',
         host: "localhost",
