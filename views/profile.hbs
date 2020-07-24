@@ -1,0 +1,9 @@
+      <div>
+         <form action="/login/change" method="POST">
+            <span>{{Message}}</span>
+            <input name="name" maxlength="255" type="text" placeholder="Логин" value="{{User.name}}">
+            <input class="content__input" name="password" type="password" placeholder="Старый пароль">
+            <input class="content__input" name="passwordNew" type="password" placeholder="Новый пароль">
+            <button type="submit">Изменить</button>
+         </form>
+      </div>

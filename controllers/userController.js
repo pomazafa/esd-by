@@ -1,16 +1,39 @@
 const { User } = require('../models/model.js');
 const { secret } = require('../config/config.js');
 const verifyToken = require('../public/js/authenticate.js');
-const jwt = require('jsonwebtoken');
-const crypto = require('crypto');
+const error401 = require('../public/js/error401.js');
 var form = null;
+const crypto = require('crypto');
+const jwt = require('jsonwebtoken');
+var Message = null;
 
 exports.index = async function(request, response) {
     if (await verifyToken(request, response)) {
-        response.redirect('/');
-    } else {
+        if (request.user != null) {
+            if (request.user.role == 1) {
+                response.render('profile.hbs', {
+                    User: request.user.toJSON(),
+                    isAuth: true,
+                    isAdmin: true,
+                    Title: 'Изменение профиля | esd-by.org',
+                    Message: Message
+                })
+            } else {
+                response.render('profile.hbs', {
+                    User: request.user.toJSON(),
+                    isAuth: true,
+                    Title: 'Изменение профиля | esd-by.org',
+                    Message: Message
+                })
+            }
+            Message = null;
+        } else {
+            error401(request, response);
+        }
+    } 
+    else {
         response.render("login.hbs", {
-            title: 'Вход  | esd-by.org', form: form
+            Title: 'Вход  | esd-by.org', form: form
         });
     }
 };
@@ -53,3 +76,55 @@ exports.authenticate = async function(request, response) {
         }
     }
 };
+
+exports.update = async function (request, response) {
+    if (await verifyToken(request, response)) {
+        const userName = request.body.name;
+        var userPassword = request.body.password;
+        const userPasswordNew = request.body.passwordNew;
+        const result = await User.findOne({
+            where: {
+                id: request.user.id
+            }
+        })
+        if (result === null) {
+            error401(request, response);
+        } else {
+                if (userPasswordNew != "") {
+                    if (userPassword != "") {
+                        const salt = result.passwordSalt;
+                        const passwordHash = crypto.createHash('sha512').update(`${userPassword}${salt}`).digest('hex');
+                        if (passwordHash === result.password) {
+                            userPassword = crypto.createHash('sha512').update(`${userPasswordNew}${salt}`).digest('hex');
+                        } else {
+                            Message = "Старый пароль введён неверно";
+                            response.redirect('/login');
+                            return;
+                        }
+                    } else {
+                        Message = "Вы не ввели старый пароль";
+                        response.redirect('/login');
+                        return;
+                    }
+                } else {
+                    if (userPassword == "") {
+                        userPassword = result.password;
+                    } else {
+                        Message = "Вы не ввели новый пароль";
+                        response.redirect('/login');
+                        return;
+                    }
+                }
+                let values = {
+                    name: userName,
+                    password: userPassword
+                };
+                result.update(values);
+
+                Message = "Данные успешно сохранены";
+                response.redirect('/login');
+        }
+    } else {
+        response.redirect('/login');
+    }
+}

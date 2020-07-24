@@ -1,17 +1,16 @@
 <div>
     {{#if isAdmin}}
-    <a href="/news/add">Добавить</a>
+    <a href="/news/add/ru">Добавить</a>
+    {{/if}}
+    {{#if News.0.id}}
+    {{#each News}}
+    <div>
+    <a href="/news/{{this.id}}/ru"><p>{{this.title}}</p></a>
+    <p>{{#formatTime this.newDate}}{{/formatTime}}</p>
+    <p>{{this.messageShort}}</p>
+    </div>
+    {{/each}}
     {{else}}
-        {{#if News.0.id}}
-        {{#each News}}
-        <div>
-        <p> {{this.title}}</p>
-            <p>{{#formatTime this.newDate}}{{/formatTime}}</p>
-            <p>{{this.messageShort}}</p>
-        </div>
-        {{/each}}
-        {{else}}
-        <p>Новостей на данный момент нет. Зайдите позже</p>
-        {{/if}}
+    <p>Новостей на данный момент нет. Зайдите позже</p>
     {{/if}}
 </div>
