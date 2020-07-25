@@ -14,12 +14,14 @@
   "password": "Пароль",
   "add": "Добавить",
   "noNews": "Новостей на данный момент нет. Зайдите позже",
+  "noEvents": "Событий на данный момент нет. Зайдите позже",
   "photoDescription": "Описание фото",
   "create": "Создать",
   "title": "Заголовок",
   "shortDescription": "Краткое описание",
   "photo": "Фото",
-  "News": "News",
+  "News": "Новость",
+	"Event": "Событие",
   "aboutAssociation": "Об Ассоциации",
   "addNews": "Добавить новость",
   "profileUpdate": "Обновление профиля",
@@ -34,5 +36,6 @@
   "emptyNewPassword": "Вы не ввели новый пароль",
   "dataSavedSuccessfully": "Данные успешно сохранены",
   "delete": "Удалить",
-  "back": "Назад"
+  "back": "Назад",
+  "addEvent": "Добавить событие"
 }

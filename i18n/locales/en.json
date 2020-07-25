@@ -14,12 +14,13 @@
 	"password": "Password",
 	"add": "Add",
 	"noNews": "There is no news at the moment. Come back later.",
+	"noEvents": "There is no events at the moment. Come back later.",
 	"photoDescription": "Photo description",
-	"crate": "Create",
 	"title": "Title",
 	"shortDescription": "Short description",
 	"photo": "Photo",
 	"News": "News",
+	"Event": "Event",
 	"create": "Create",
 	"aboutAssociation": "About Association",
 	"addNews": "Add news",
@@ -35,5 +36,6 @@
 	"emptyNewPassword": "New password is missing",
 	"dataSavedSuccessfully": "Profile update was saved successfully",
 	"delete": "Delete",
-	"back": "Back"
+	"back": "Back",
+	"addEvent": "Add Event"
 }

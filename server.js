@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const userRouter = require("./routes/userRouter.js");
 const homeRouter = require("./routes/homeRouter.js");
 const newsRouter = require("./routes/newsRouter.js");
+const eventsRouter = require("./routes/eventsRouter.js");
 const expressHbs = require("express-handlebars");
 const verifyToken = require('./public/js/authenticate');
 const i18nUtil = require('./i18n/i18nUtil');
@@ -97,6 +98,7 @@ app.use((req, res, next) => {
 app.use(verifyToken);
 
 app.use(i18nUtil.url(app, '/news'), newsRouter);
+app.use(i18nUtil.url(app, '/events'), eventsRouter);
 app.use(i18nUtil.url(app, '/'), userRouter);
 app.use(i18nUtil.url(app, '/'), homeRouter);
 
