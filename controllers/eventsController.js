@@ -94,8 +94,8 @@ const {
     await Event.create({
       title: title,
       publishDate: new Date(),
-      message: message,
-      messageShort: messageShort,
+      description: message,
+      descriptionShort: messageShort,
     });
     response.redirect(i18nUtil.urlWithLocale('events'));
   };

@@ -4,12 +4,12 @@
         <a href="/events/delete/{{Events.id}}">{{__ 'delete'}}</a>
     {{/if}}
     <p>{{#formatTime Events.publishDate}}{{/formatTime}}</p>
-    <p>{{Events.messageShort}}</p>
-    <p>{{Events.message}}</p>
-    <a href="{{uriWithLocale 'events'}}">{{__ 'back'}}</a>
+    <p>{{Events.descriptionShort}}</p>
+    <p>{{Events.description}}</p>
     {{#each Photos}}
         {{#if ../isAdmin}}
             <a href="/events/photos/delete/{{this.id}}">{{__ 'delete'}}</a>
         {{/if}}
     {{/each}}
+    <a href="{{uriWithLocale 'events'}}">{{__ 'back'}}</a>
 </div>
