@@ -1,21 +1,22 @@
 const jwt = require('jsonwebtoken');
-const {secret} = require('../../config/config.js')
+const { secret } = require('../../config/config.js');
 
-module.exports = async (req, res) => {
+module.exports = async (req, res, next) => {
   const token = req.cookies.token || '';
   try {
     if (!token) {
-      return null;
+      next();
+      return;
     }
     const decrypt = await jwt.verify(token, secret);
-    const user = await User.findOne({
+    req.user = await User.findOne({
       where: {
-          id: decrypt.user.id
-      }
+        id: decrypt.user.id,
+      },
     });
-    req.user = user;
-    return req.user;
+    next();
   } catch (err) {
-    return null;
+    console.error(err);
+    next();
   }
 };

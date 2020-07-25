@@ -1,32 +1,52 @@
 <header>
-    <link rel="stylesheet" type="text/css" href="/static/css/header.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/header.css" />
     <div class="header">
         <div class="inner_header">
-            <div class="logo_container">
+            <a class="logo_container" href="/">
                 <img src="/static/images/logo.png" alt="Главная">
+            </a>
+            <div>
+                <div>
+                    <a href="{{switchLocaleUri 'ru' req.originalUrl}}">
+                        Русский
+                    </a>
+                    <a href="{{switchLocaleUri 'en' req.originalUrl}}">
+                        English
+                    </a>
+                </div>
+
+                {{#unless req.user}}
+                    <a href="{{uriWithLocale 'login'}}">
+                        <li><span>{{__ 'login'}}</span></li>
+                    </a>
+                {{else}}
+                    <a href="/logout">
+                        <li><span>{{__ 'logout'}}</span></li>
+                    </a>
+                {{/unless}}
             </div>
-            {{#if english}}
-            {{else}}
-                <nav>
+            <nav>
                 <ul class="navigation">
-                    <a href="/about"><li>О нас</li></a>
-                    <a href="/news/ru"><li>Новости</li></a>
-                    <a href="/contact"><li>События</li></a>
-                    <a href="/contact"><li>Программы</li></a>
-                    <a href="/contact"><li>Проекты</li></a>
-
-                    {{#unless login}}
-                    <a href="/login"><li><span>Войти</span></li></a>
-                    {{else}}
-                    <a href="/exit"><li><span>Выйти</span></li></a>
-                    {{/unless}}
-
-                    {{!-- <a href="/contact"><li>Русский</li></a>
-                    <a href="/contact"><li>English</li></a> --}}
+                    <a href="{{uriWithLocale 'about'}}">
+                        <li>{{__ 'about'}}</li>
+                    </a>
+                    <a href="{{uriWithLocale 'news'}}">
+                        <li>{{__ 'news'}}</li>
+                    </a>
+                    <a href="{{uriWithLocale 'events'}}">
+                        <li>{{__ 'events'}}</li>
+                    </a>
+                    <a href="{{uriWithLocale 'programs'}}">
+                        <li>{{__ 'programs'}}</li>
+                    </a>
+                    <a href="{{uriWithLocale 'projects'}}">
+                        <li>{{__ 'projects'}}</li>
+                    </a>
+                    <a href="{{uriWithLocale 'library'}}">
+                        <li>{{__ 'library'}}</li>
+                    </a>
                 </ul>
-                </nav>
-        
-            {{/if}}
+            </nav>
         </div>
     </div>
 </header>

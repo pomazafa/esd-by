@@ -45,7 +45,6 @@
   }
   
   .inner_footer .footer_third{
-    width: calc(21.6666666667% - 20px);
     margin-right: 10px;
     float: left;
     height: 100%;
