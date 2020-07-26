@@ -1,21 +1,27 @@
 const {
-  New
+  New,
 } = require('../models/model.js');
 const i18n = require('i18n');
 const i18nUtil = require('../i18n/i18nUtil');
 const fs = require('fs');
+const { asyncForEach } = require('../util/controllerUtil');
+const { translate } = require('../util/tranlateUtil');
 
 exports.index = async function (request, response) {
+  const news = await New.findAll();
+
+  await asyncForEach(news, async news => {
+    await translateNews(news);
+  });
+
   if (request.user != null) {
     if (request.user.role === 2) {
-      const news = await New.findAll();
       response.render('news.hbs', {
         News: news.map(n => n.toJSON()),
         Title: `${i18n.__('news')} | esd-by.org`,
         isAdmin: true,
       });
     } else {
-      const news = await New.findAll();
       response.render('news.hbs', {
         News: news.map(n => n.toJSON()),
         Title: `${i18n.__('news')} | esd-by.org`,
@@ -23,7 +29,6 @@ exports.index = async function (request, response) {
       });
     }
   } else {
-    const news = await New.findAll();
     response.render('news.hbs', {
       News: news.map(n => n.toJSON()),
       Title: `${i18n.__('news')} | esd-by.org`,
@@ -33,24 +38,22 @@ exports.index = async function (request, response) {
 
 exports.getNew = async function (request, response) {
   const id = request.params.id;
+  const news = await New.findOne({
+    where: {
+      id: id,
+    },
+  });
+
+  await translateNews(news);
+
   if (request.user != null) {
     if (request.user.role == 2) {
-      const news = await New.findOne({
-        where: {
-          id: id,
-        },
-      });
       response.render('new.hbs', {
         News: news.toJSON(),
         Title: news.title + ' | esd-by.org',
         isAdmin: true,
       });
     } else {
-      const news = await New.findOne({
-        where: {
-          id: id,
-        },
-      });
       response.render('new.hbs', {
         News: news.toJSON(),
         Title: news.title + ' | esd-by.org',
@@ -58,16 +61,15 @@ exports.getNew = async function (request, response) {
       });
     }
   } else {
-    const news = await New.findOne({
-      where: {
-        id: id,
-      },
-    });
     response.render('new.hbs', {
       News: news.toJSON(),
       Title: news.title + ' | esd-by.org',
     });
   }
+};
+
+const translateNews = async news => {
+  return await translate(news, ['title', 'messageShort', 'message']);
 };
 
 exports.addget = async function (request, response) {
@@ -123,10 +125,10 @@ exports.delete = async function (request, response) {
   fs.access(fileName, fs.F_OK, (err) => {
     if (err) {
       console.error(err);
-      return
+      return;
     }
-    fs.unlink(fileName,function(err){
-      if(err) return console.log(err);
+    fs.unlink(fileName, function (err) {
+      if (err) return console.log(err);
       console.log('file deleted successfully');
     });
   });

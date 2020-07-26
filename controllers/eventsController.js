@@ -5,18 +5,24 @@ const {
 const i18n = require('i18n');
 const i18nUtil = require('../i18n/i18nUtil');
 const fs = require('fs');
+const { asyncForEach } = require('../util/controllerUtil');
+const { translate } = require('../util/tranlateUtil');
 
 exports.index = async function (request, response) {
+  const events = await Event.findAll({ include: [Photo] });
+
+  await asyncForEach(events, async event => {
+    await translateEvent(event);
+  });
+
   if (request.user != null) {
     if (request.user.role === 2) {
-      const events = await Event.findAll({ include: [Photo] });
       response.render('events.hbs', {
         Events: events.map(n => n.toJSON()),
         Title: `${i18n.__('events')} | esd-by.org`,
         isAdmin: true,
       });
     } else {
-      const events = await Event.findAll({ include: [Photo] });
       response.render('events.hbs', {
         Events: events.map(n => n.toJSON()),
         Title: `${i18n.__('events')} | esd-by.org`,
@@ -24,7 +30,6 @@ exports.index = async function (request, response) {
       });
     }
   } else {
-    const events = await Event.findAll({ include: [Photo] });
     response.render('events.hbs', {
       Events: events.map(n => n.toJSON()),
       Title: `${i18n.__('events')} | esd-by.org`,
@@ -34,32 +39,39 @@ exports.index = async function (request, response) {
 
 exports.getEvent = async function (request, response) {
   const id = request.params.id;
-  const events = await Event.findOne({
+  const event = await Event.findOne({
     where: {
       id: id,
     },
     include: [Photo],
   });
+
+  await translateEvent(event);
+
   if (request.user != null) {
     if (request.user.role == 2) {
       response.render('event.hbs', {
-        Events: events.toJSON(),
-        Title: events.title + ' | esd-by.org',
+        Events: event.toJSON(),
+        Title: event.title + ' | esd-by.org',
         isAdmin: true,
       });
     } else {
       response.render('event.hbs', {
-        Events: events.toJSON(),
-        Title: events.title + ' | esd-by.org',
+        Events: event.toJSON(),
+        Title: event.title + ' | esd-by.org',
         isAuth: true,
       });
     }
   } else {
     response.render('event.hbs', {
-      Events: events.toJSON(),
-      Title: events.title + ' | esd-by.org',
+      Events: event.toJSON(),
+      Title: event.title + ' | esd-by.org',
     });
   }
+};
+
+const translateEvent = async event => {
+  return await translate(event, ['title', 'descriptionShort', 'description']);
 };
 
 exports.addget = async function (request, response) {
