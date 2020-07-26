@@ -1,10 +1,11 @@
 const express = require("express");
 const newsController = require("../controllers/newsController.js");
 const newsRouter = express.Router();
+const fileUploadUtil = require('../util/fileUploadUtil');
 
 newsRouter.get("/", newsController.index);
 newsRouter.get("/add/", newsController.addget);
-newsRouter.post("/add", newsController.addpost);
+newsRouter.post("/add", fileUploadUtil.multerMw.single('photo'), newsController.addpost);
 newsRouter.get("/delete/:id", newsController.delete);
 newsRouter.get("/:id/", newsController.getNew);
 

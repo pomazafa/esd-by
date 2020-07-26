@@ -6,10 +6,8 @@
     <p>{{#formatTime Events.publishDate}}{{/formatTime}}</p>
     <p>{{Events.descriptionShort}}</p>
     <p>{{Events.description}}</p>
-    {{#each Photos}}
-        {{#if ../isAdmin}}
-            <a href="/events/photos/delete/{{this.id}}">{{__ 'delete'}}</a>
-        {{/if}}
+    {{#each Events.Photos}}
+        <img src="/static/images/uploads/{{this.photoURL}}" alt={{this.photoDescription}}/>
     {{/each}}
     <a href="{{uriWithLocale 'events'}}">{{__ 'back'}}</a>
 </div>

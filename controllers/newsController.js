@@ -3,6 +3,7 @@ const {
 } = require('../models/model.js');
 const i18n = require('i18n');
 const i18nUtil = require('../i18n/i18nUtil');
+const fs = require('fs');
 
 exports.index = async function (request, response) {
   if (request.user != null) {
@@ -93,7 +94,7 @@ exports.addpost = async function (request, response) {
 
   await New.create({
     title: title,
-    photoURL: request.filename,
+    photoURL: request.file.filename,
     photoDescription: photoDescription,
     newDate: new Date(),
     message: message,
@@ -105,10 +106,30 @@ exports.addpost = async function (request, response) {
 exports.delete = async function (request, response) {
   const id = request.params.id;
 
+  const news = await New.findOne({
+    where: {
+      id: id,
+    },
+  });
+
   await New.destroy({
     where: {
       id: id,
     },
   });
+
+  const fileName = './public/images/uploads/' + news.photoURL;
+
+  fs.access(fileName, fs.F_OK, (err) => {
+    if (err) {
+      console.error(err);
+      return
+    }
+    fs.unlink(fileName,function(err){
+      if(err) return console.log(err);
+      console.log('file deleted successfully');
+    });
+  });
+
   response.redirect(i18nUtil.urlWithLocale('news'));
 };

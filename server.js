@@ -11,23 +11,8 @@ const verifyToken = require('./public/js/authenticate');
 const i18nUtil = require('./i18n/i18nUtil');
 const hbs = require("hbs");
 const cookieParser = require('cookie-parser');
-const multer = require('multer');
-const path = require('path');
 
 app.use(cookieParser());
-app.use(multer(
-    {
-        storage: multer.diskStorage({
-          destination: (req, file, cb) => {
-            cb(null, "./public/images/uploads");
-        },
-          filename: (req, file, callback) => {
-            req.filename = req.body.title + path.extname(file.originalname);
-            callback(null, req.body.title + path.extname(file.originalname));
-          }
-        })
-    }
-).single("photo"));
 
 app.engine("hbs", expressHbs({
     layoutsDir: "views/layouts",
