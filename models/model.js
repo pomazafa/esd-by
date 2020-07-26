@@ -14,20 +14,16 @@ sequelize.sync({ force: false }).then(() => {
     console.log('sync done');
 });
 
-function models(sequelize) {
-    var model =  {
-        Event: EventModel(sequelize),
-        User: UserModel(sequelize),
-        New: NewModel(sequelize),
-        Photo: PhotoModel(sequelize),
-        Program: ProgramModel(sequelize),
-        Project: ProjectModel(sequelize)
-    };
+const models = {
+  Event: EventModel(sequelize),
+  User: UserModel(sequelize),
+  New: NewModel(sequelize),
+  Photo: PhotoModel(sequelize),
+  Program: ProgramModel(sequelize),
+  Project: ProjectModel(sequelize),
+};
 
-    model.Event.hasMany(model.Photo);
-    
-    return model;
-}
+models.Event.hasMany(models.Photo);
 
 try {
     sequelize.authenticate()
@@ -39,11 +35,6 @@ try {
 }
 
 module.exports = {
-        Event,
-        New,
-        User,
-        Photo,
-        Program,
-        Project
-    } =
-    models(sequelize);
+  ...models,
+  sequelize,
+};

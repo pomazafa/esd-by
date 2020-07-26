@@ -1,6 +1,7 @@
 const {
   Event,
   Photo,
+  sequelize
 } = require('../models/model.js');
 const i18n = require('i18n');
 const i18nUtil = require('../i18n/i18nUtil');
@@ -93,19 +94,30 @@ exports.addpost = async function (request, response) {
   const messageShort = request.body.messageShort == '' ? null : request.body.messageShort;
   const message = request.body.message;
 
-  const event = await Event.create({
-    title: title,
-    publishDate: new Date(),
-    description: message,
-    descriptionShort: messageShort,
-  });
+  let transaction;
+  try {
+    transaction = await sequelize.transaction();
+    const event = await Event.create({
+      title: title,
+      publishDate: new Date(),
+      description: message,
+      descriptionShort: messageShort,
+    }, { transaction: transaction });
 
-  for (let i = 0; i < request.files.length; i++) {
-    await Photo.create({
-      photoURL: request.files[i].filename,
-      photoDescription: request.body[`photo-${i}`],
-      EventId: event.id
-    });
+    for (let i = 0; i < request.files.length; i++) {
+      await Photo.create({
+        photoURL: request.files[i].filename,
+        photoDescription: request.body[`photo-${i}`],
+        EventId: event.id,
+      }, { transaction: transaction });
+    }
+
+    await transaction.commit();
+  } catch (err) {
+    if (transaction) {
+      await transaction.rollback();
+      //todo handle
+    }
   }
 
   response.redirect(i18nUtil.urlWithLocale('events'));
@@ -120,25 +132,38 @@ exports.delete = async function (request, response) {
     },
   });
 
-  for (let i = 0; i < photos.length; i++) {
-    await photos[i].destroy();
-    const fileName = './public/images/uploads/' + photos[i].photoURL;
-    fs.access(fileName, fs.F_OK, (err) => {
-      if (err) {
-        console.error(err);
-        return
-      }
-      fs.unlink(fileName,function(err){
-        if(err) return console.log(err);
-        console.log('file deleted successfully');
+  let transaction;
+  try {
+    transaction = await sequelize.transaction();
+
+    await Photo.destroy({ where: { EventId: id } }, { transaction: transaction });
+    await Event.destroy({
+      where: {
+        id: id,
+      },
+    }, { transaction: transaction });
+
+    for (let i = 0; i < photos.length; i++) {
+      const fileName = './public/images/uploads/' + photos[i].photoURL;
+      fs.access(fileName, fs.F_OK, (err) => {
+        if (err) {
+          console.error(err);
+          return;
+        }
+        fs.unlink(fileName, function (err) {
+          if (err) return console.log(err);
+          console.log('file deleted successfully');
+        });
       });
-    });
+    }
+
+    await transaction.commit();
+  } catch (err) {
+    if (transaction) {
+      await transaction.rollback();
+      //todo handle
+    }
   }
 
-  await Event.destroy({
-    where: {
-      id: id,
-    },
-  });
   response.redirect(i18nUtil.urlWithLocale('events'));
 };
