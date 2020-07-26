@@ -1,0 +1,13 @@
+<div>
+    <a><p>{{Projects.title}}</p></a>
+    {{#if isAdmin}}
+        <a href="/projects/delete/{{Projects.id}}">{{__ 'delete'}}</a>
+    {{/if}}
+    <p>{{#formatTime Projects.publishDate}}{{/formatTime}}</p>
+    <p>{{Projects.messageShort}}</p>
+    <p>{{Projects.message}}</p>
+    {{#if Projects.photoURL}}
+        <img src="/static/images/uploads/{{Projects.photoURL}}" alt={{Projects.photoDescription}}/>
+    {{/if}}
+    <a href="{{uriWithLocale 'projects'}}">{{__ 'back'}}</a>
+</div>

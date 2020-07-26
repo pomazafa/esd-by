@@ -15,12 +15,14 @@
 	"add": "Add",
 	"noNews": "There are no news at the moment. Come back later.",
 	"noEvents": "There are no events at the moment. Come back later.",
+	"noProjects": "There are no projects at the moment. Come back later.",
 	"photoDescription": "Photo description",
 	"title": "Title",
 	"shortDescription": "Short description",
 	"photo": "Photo",
 	"News": "News",
 	"Event": "Event",
+	"Project": "Project",
 	"create": "Create",
 	"aboutAssociation": "About Association",
 	"addNews": "Add news",
@@ -35,7 +37,10 @@
 	"emptyOldPassword": "Old password is missing",
 	"emptyNewPassword": "New password is missing",
 	"dataSavedSuccessfully": "Profile update was saved successfully",
+	"emptyTitle": "Title is missing",
+	"emptyMessage": "Description is missing",
 	"delete": "Delete",
 	"back": "Back",
-	"addEvent": "Add Event"
+	"addEvent": "Add Event",
+	"addProject": "Add Project"
 }

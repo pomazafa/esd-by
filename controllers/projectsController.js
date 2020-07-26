@@ -1,101 +1,105 @@
 const {
-  New,
+  Project,
 } = require('../models/model.js');
 const i18n = require('i18n');
 const i18nUtil = require('../i18n/i18nUtil');
 const fs = require('fs');
-const { asyncForEach } = require('../util/controllerUtil');
-const { translate } = require('../util/tranlateUtil');
+const {
+  asyncForEach
+} = require('../util/controllerUtil');
+const {
+  translate
+} = require('../util/tranlateUtil');
 
 let form = null;
 
 exports.index = async function (request, response) {
-  const news = await New.findAll();
+  const projects = await Project.findAll();
 
-  await asyncForEach(news, async news => {
-    await translateNews(news);
+  await asyncForEach(projects, async projects => {
+    await translateProjects(projects);
   });
 
   if (request.user != null) {
     if (request.user.role === 2) {
-      response.render('news.hbs', {
-        News: news.map(n => n.toJSON()),
-        Title: `${i18n.__('news')} | esd-by.org`,
+      response.render('projects.hbs', {
+        Projects: projects.map(n => n.toJSON()),
+        Title: `${i18n.__('projects')} | esd-by.org`,
         isAdmin: true,
       });
     } else {
-      response.render('news.hbs', {
-        News: news.map(n => n.toJSON()),
-        Title: `${i18n.__('news')} | esd-by.org`,
+      response.render('projects.hbs', {
+        Projects: projects.map(n => n.toJSON()),
+        Title: `${i18n.__('projects')} | esd-by.org`,
         isAuth: true,
       });
     }
   } else {
-    response.render('news.hbs', {
-      News: news.map(n => n.toJSON()),
-      Title: `${i18n.__('news')} | esd-by.org`,
+    response.render('projects.hbs', {
+      Projects: projects.map(n => n.toJSON()),
+      Title: `${i18n.__('projects')} | esd-by.org`,
     });
   }
 };
 
-exports.getNew = async function (request, response) {
+exports.getProject = async function (request, response) {
   const id = request.params.id;
-  const news = await New.findOne({
+  const projects = await Project.findOne({
     where: {
       id: id,
     },
   });
 
-  await translateNews(news);
+  await translateProjects(projects);
 
   if (request.user != null) {
     if (request.user.role == 2) {
-      response.render('new.hbs', {
-        News: news.toJSON(),
-        Title: news.title + ' | esd-by.org',
+      response.render('project.hbs', {
+        Projects: projects.toJSON(),
+        Title: projects.title + ' | esd-by.org',
         isAdmin: true,
       });
     } else {
-      response.render('new.hbs', {
-        News: news.toJSON(),
-        Title: news.title + ' | esd-by.org',
+      response.render('project.hbs', {
+        Projects: projects.toJSON(),
+        Title: projects.title + ' | esd-by.org',
         isAuth: true,
       });
     }
   } else {
-    response.render('new.hbs', {
-      News: news.toJSON(),
-      Title: news.title + ' | esd-by.org',
+    response.render('project.hbs', {
+      Projects: projects.toJSON(),
+      Title: projects.title + ' | esd-by.org',
     });
   }
 };
 
-const translateNews = async news => {
-  return await translate(news, ['title', 'messageShort', 'message']);
+const translateProjects = async projects => {
+  return await translate(projects, ['title', 'messageShort', 'message']);
 };
 
 exports.addget = async function (request, response) {
   if (request.user != null) {
     if (request.user.role == 2) {
-      response.render('addnew.hbs', {
-        Title: `${i18n.__('addNews')} | esd-by.org`,
+      response.render('addproject.hbs', {
+        Title: `${i18n.__('addProject')} | esd-by.org`,
         form: form
       });
       form = null;
     } else {
-      response.redirect(i18nUtil.urlWithLocale('news'));
+      response.redirect(i18nUtil.urlWithLocale('projects'));
     }
   } else {
-    response.redirect(i18nUtil.urlWithLocale('news'));
+    response.redirect(i18nUtil.urlWithLocale('projects'));
   }
 };
 
 exports.addpost = async function (request, response) {
   const title = request.body.title;
   const messageShort = request.body.messageShort == '' ? null : request.body.messageShort;
-  const photoDescription = request.body.photoDescription == ''
-    ? null
-    : request.body.photoDescription;
+  const photoDescription = request.body.photoDescription == '' ?
+    null :
+    request.body.photoDescription;
   const message = request.body.message;
 
   if (title === "") {
@@ -106,7 +110,7 @@ exports.addpost = async function (request, response) {
       photoDescription: photoDescription,
       message: message
     }
-    response.redirect('/news/add')
+    response.redirect('/projects/add')
     return;
   }
   if (message === "") {
@@ -117,37 +121,37 @@ exports.addpost = async function (request, response) {
       photoDescription: photoDescription,
       message: message
     }
-    response.redirect('/news/add')
+    response.redirect('/projects/add')
     return;
   }
 
-  await New.create({
+  await Project.create({
     title: title,
     photoURL: request.file.filename,
     photoDescription: photoDescription,
-    newDate: new Date(),
+    publishDate: new Date(),
     message: message,
     messageShort: messageShort,
   });
-  response.redirect(i18nUtil.urlWithLocale('news'));
+  response.redirect(i18nUtil.urlWithLocale('projects'));
 };
 
 exports.delete = async function (request, response) {
   const id = request.params.id;
 
-  const news = await New.findOne({
+  const projects = await Project.findOne({
     where: {
       id: id,
     },
   });
 
-  await New.destroy({
+  await Project.destroy({
     where: {
       id: id,
     },
   });
 
-  const fileName = './public/images/uploads/' + news.photoURL;
+  const fileName = './public/images/uploads/' + projects.photoURL;
 
   fs.access(fileName, fs.F_OK, (err) => {
     if (err) {
@@ -160,5 +164,5 @@ exports.delete = async function (request, response) {
     });
   });
 
-  response.redirect(i18nUtil.urlWithLocale('news'));
+  response.redirect(i18nUtil.urlWithLocale('projects'));
 };
