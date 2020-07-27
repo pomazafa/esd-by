@@ -1,0 +1,21 @@
+<form action="/programs/add" method="POST" enctype="multipart/form-data">
+    <span>{{form.errmessage}}</span>
+    <div class="addProgram-container">
+        <input name="title"
+                maxlength="255"
+                type="text"
+                placeholder="{{__ 'title'}}*"
+                value="{{form.title}}">
+        <textarea name="messageShort"
+                cols="30"
+                maxlength="255"
+                rows="10"
+                placeholder="{{__ 'shortDescription'}}">{{form.messageShort}}</textarea>
+        <textarea name="message"
+                cols="30"
+                maxlength="2048"
+                rows="10"
+                placeholder="{{__ 'Program'}}*">{{form.message}}</textarea>
+        <button type="submit">{{__ 'create'}}</button>
+    </div>
+</form>

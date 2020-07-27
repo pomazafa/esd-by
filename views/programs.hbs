@@ -1,0 +1,16 @@
+<div>
+    {{#if isAdmin}}
+        <a href="/programs/add">{{__ 'add'}}</a>
+    {{/if}}
+    {{#if Programs.0.id}}
+        {{#each Programs}}
+            <div>
+                <a href="{{uriWithLocale 'programs' this.id }}"><p>{{this.title}}</p></a>
+                <p>{{#formatTime this.publishDate}}{{/formatTime}}</p>
+                <p>{{this.messageShort}}</p>
+            </div>
+        {{/each}}
+    {{else}}
+        <p>{{__ 'noPrograms'}}</p>
+    {{/if}}
+</div>

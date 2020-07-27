@@ -16,6 +16,7 @@
 	"noNews": "There are no news at the moment. Come back later.",
 	"noEvents": "There are no events at the moment. Come back later.",
 	"noProjects": "There are no projects at the moment. Come back later.",
+	"noPrograms": "There are no programs at the moment. Come back later.",
 	"photoDescription": "Photo description",
 	"title": "Title",
 	"shortDescription": "Short description",
@@ -23,6 +24,7 @@
 	"News": "News",
 	"Event": "Event",
 	"Project": "Project",
+	"Program": "Program",
 	"create": "Create",
 	"aboutAssociation": "About Association",
 	"addNews": "Add news",
@@ -42,5 +44,6 @@
 	"delete": "Delete",
 	"back": "Back",
 	"addEvent": "Add Event",
-	"addProject": "Add Project"
+	"addProject": "Add Project",
+	"addProgram": "Add Program"
 }

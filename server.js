@@ -6,6 +6,7 @@ const userRouter = require("./routes/userRouter.js");
 const homeRouter = require("./routes/homeRouter.js");
 const newsRouter = require("./routes/newsRouter.js");
 const projectsRouter = require("./routes/projectsRouter.js");
+const programsRouter = require("./routes/programsRouter.js");
 const eventsRouter = require("./routes/eventsRouter.js");
 const expressHbs = require("express-handlebars");
 const verifyToken = require('./util/authenticate');
@@ -86,6 +87,7 @@ app.use(verifyToken);
 app.use(i18nUtil.url(app, '/news'), newsRouter);
 app.use(i18nUtil.url(app, '/events'), eventsRouter);
 app.use(i18nUtil.url(app, '/projects'), projectsRouter);
+app.use(i18nUtil.url(app, '/programs'), programsRouter);
 app.use(i18nUtil.url(app, '/'), userRouter);
 app.use(i18nUtil.url(app, '/'), homeRouter);
 
