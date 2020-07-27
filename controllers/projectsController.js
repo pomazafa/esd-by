@@ -127,7 +127,7 @@ exports.addpost = async function (request, response) {
 
   await Project.create({
     title: title,
-    photoURL: request.file.filename,
+    photoURL: request.file ? request.file.filename : null,
     photoDescription: photoDescription,
     publishDate: new Date(),
     message: message,

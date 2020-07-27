@@ -123,7 +123,7 @@ exports.addpost = async function (request, response) {
 
   await New.create({
     title: title,
-    photoURL: request.file.filename,
+    photoURL: request.file ? request.file.filename : null,
     photoDescription: photoDescription,
     newDate: new Date(),
     message: message,
