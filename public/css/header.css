@@ -10,6 +10,7 @@
 .header{
   border-bottom: 1px solid #C8D090;;
   scroll-behavior: smooth;
+  background-color: #cbe3cb;
 }
 .container {
   width: 100%;
@@ -85,9 +86,12 @@ nav a {
   justify-content: center;
   align-items: flex-start;
   padding: 20px;
-  background-color: gainsboro;
+  background-color: #cbe3cb;
   opacity: 0;
   width: 180px;
+  border-bottom: 1px solid #C8D090;
+  border-left: 1px solid #C8D090;
+  border-right: 1px solid #C8D090;
 }
 @keyframes fadeIn {
   0% { opacity: 0; }
@@ -107,22 +111,21 @@ nav a {
   animation-duration: 0.3s;
 }
 
-a {
+.head-menu {
   text-decoration:none;
   color: black;
   transition: all .3s cubic-bezier(.2, 0, 0, 1);
   z-index: 1;
 }
-a:after {
+.head-menu {
     content: '';
-    background-color: black;
     transition: all .3s cubic-bezier(.2, 0, 0, 1);
     transform-origin: bottom center;
     z-index: -1;
     font-size: 14px;
   }
   
-a:hover {
+.head-menu:hover{
     color: green;
     font-size: 18px;
 }
