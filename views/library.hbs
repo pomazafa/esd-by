@@ -1,22 +1,40 @@
 <div>
     {{#if isAdmin}}
-        <a href="/library/addCategory">{{__ 'addCategory'}}</a>
+    <form action="/library/addCategory" method="POST">
+        <input name="title" maxlength="255" type="text" placeholder="{{__ 'Category'}}*">
+        <button type="submit">{{__ 'addCategory'}}</button>
+    </form>
     {{/if}}
-    {{#if Categories.0.id}}
-        {{#each Categories}}
-            <div>
-                <p>{{this.title}}</p>
-            </div>
-            {{#each this.Subcategories}}
-                <div>
-                    <p>{{this.title}}</p>
-                </div>
-            {{/each}}
-            {{#if ../isAdmin}}
-                <a href="/library/addSubcategory/{{this.id}}">{{__ 'addSubcategory'}}</a>
-            {{/if}}
-        {{/each}}
+    {{#if Library.0.id}}
+    {{#each Library}}
+    <div>
+        <p>{{this.title}}</p>
+    </div>
+    {{#if ../isAdmin}}
+    <form action="/library/addCategoryDoc/{{this.id}}" method="POST">
+        <input type="file">
+        <input name="title" maxlength="255" type="text" placeholder="{{__ 'File'}}*">
+        <button type="submit">{{__ 'addFile'}}</button>
+    </form>
+    {{/if}}
+    {{#each this.Subcategories}}
+    <div>
+        <p>{{this.title}}</p>
+    </div>
+     <form action="/library/addSubcategoryDoc/{{../this.id}}/{{this.id}}" method="POST">
+        <input type="file">
+        <input name="title" maxlength="255" type="text" placeholder="{{__ 'File'}}*">
+        <button type="submit">{{__ 'addFile'}}</button>
+    </form>
+    {{/each}}
+    {{#if ../isAdmin}}
+    <form action="/library/addSubcategory/{{this.id}}" method="POST">
+        <input name="title" maxlength="255" type="text" placeholder="{{__ 'Subcategory'}}*">
+        <button type="submit">{{__ 'addSubcategory'}}</button>
+    </form>
+    {{/if}}
+    {{/each}}
     {{else}}
-        <p>{{__ 'noCategories'}}</p>
+    <p>{{__ 'noCategories'}}</p>
     {{/if}}
 </div>

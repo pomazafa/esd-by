@@ -27,6 +27,9 @@
 	"Event": "Событие",
 	"Project": "Проект",
 	"Program": "Программа",
+	"Category": "Пункт",
+	"Subcategory": "Подпункт",
+	"File": "Название файла",
 	"aboutAssociation": "Об Ассоциации",
 	"addNews": "Добавить новость",
 	"profileUpdate": "Обновление профиля",
@@ -47,6 +50,9 @@
 	"addEvent": "Добавить событие",
 	"addProject": "Добавить проект",
 	"addProgram": "Добавить программу",
-	"addCategory": "Добавить категорию",
-	"addSubcategory": "Добавить подкатегорию"
+	"addCategory": "Добавить пункт",
+	"addSubcategory": "Добавить подпункт",
+	"addFile": "Добавить файл",
+	"logoPath": "/static/images/logo.png",
+	"mainpage": "mainpage"
 }

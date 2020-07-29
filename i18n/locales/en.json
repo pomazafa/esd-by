@@ -26,6 +26,9 @@
 	"Event": "Event",
 	"Project": "Project",
 	"Program": "Program",
+	"Category": "Category",
+	"Subcategory": "Subcategory",
+	"File": "Filename",
 	"create": "Create",
 	"aboutAssociation": "About Association",
 	"addNews": "Add news",
@@ -48,5 +51,8 @@
 	"addProject": "Add Project",
 	"addProgram": "Add Program",
 	"addCategory": "Add Category",
-	"addSubcategory": "Add Subcategory"
+	"addSubcategory": "Add Subcategory",
+	"addFile": "Add file",
+	"logoPath": "/static/images/logoeng.jpg",
+	"mainpage": "Main page"
 }

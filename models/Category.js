@@ -1,14 +1,14 @@
 const { Sequelize } = require('sequelize');
 
 module.exports = function(sequelize) {
-    const Сategory = sequelize.define('Сategory', {
+    const Category = sequelize.define('Category', {
         id: { type: Sequelize.INTEGER, autoIncrement: true, allowNull: false, primaryKey: true },
         title: { type: Sequelize.STRING, allowNull: false },
      }, {
         sequelize,
-        modelName: 'Сategory',
-        tableName: 'Сategories',
+        modelName: 'Category',
+        tableName: 'Categories',
         timestamps: false
     });
-    return Сategory;
+    return Category;
 }
