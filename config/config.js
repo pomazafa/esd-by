@@ -3,7 +3,7 @@ const path = require("path");
 module.exports = {
     secret: 'SecretESDorg',
     dbconf: {
-        dialect: 'mssql',
+        dialect: 'mysql',
         host: "localhost",
         pool: {
             max: 5,

@@ -9,6 +9,8 @@ const fs = require('fs');
 const { asyncForEach } = require('../util/controllerUtil');
 const { translate } = require('../util/tranlateUtil');
 
+let form = null;
+
 exports.index = async function (request, response) {
   const events = await Event.findAll({ include: [Photo] });
 
@@ -80,7 +82,9 @@ exports.addget = async function (request, response) {
     if (request.user.role == 2) {
       response.render('addevent.hbs', {
         Title: `${i18n.__('addEvent')} | esd-by.org`,
+        form: form
       });
+      form = null;
     } else {
       response.redirect(i18nUtil.urlWithLocale('events'));
     }
@@ -93,6 +97,27 @@ exports.addpost = async function (request, response) {
   const title = request.body.title;
   const messageShort = request.body.messageShort == '' ? null : request.body.messageShort;
   const message = request.body.message;
+
+  if (title === "") {
+    form = {
+      errmessage: i18n.__('emptyTitle'),
+      title: title,
+      messageShort: messageShort,
+      message: message
+    }
+    response.redirect('/events/add')
+    return;
+  }
+  if (message === "") {
+    form = {
+      errmessage: i18n.__('emptyMessage'),
+      title: title,
+      messageShort: messageShort,
+      message: message
+    }
+    response.redirect('/events/add')
+    return;
+  }
 
   let transaction;
   try {

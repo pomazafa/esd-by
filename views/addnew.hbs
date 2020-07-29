@@ -1,5 +1,5 @@
 <form action="/news/add" method="POST" enctype="multipart/form-data">
-    <span>{{form.message}}</span>
+    <span>{{form.errmessage}}</span>
     <div class="addnew-container">
         <input name="title"
                 maxlength="255"
@@ -10,14 +10,12 @@
                 cols="30"
                 maxlength="255"
                 rows="10"
-                placeholder="{{__ 'shortDescription'}}"
-                value=="{{form.messageShort}}"></textarea>
+                placeholder="{{__ 'shortDescription'}}">{{form.messageShort}}</textarea>
         <textarea name="message"
                 cols="30"
                 maxlength="2048"
                 rows="10"
-                placeholder="{{__ 'News'}}*"
-                value="{{form.message}}"></textarea>
+                placeholder="{{__ 'News'}}*">{{form.message}}</textarea>
         <label>{{__ 'photo'}}</label>
         <input name="photo" type="file">
         <input name="photoDescription"

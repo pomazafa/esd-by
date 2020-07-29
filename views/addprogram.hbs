@@ -1,8 +1,6 @@
-<link rel="stylesheet" type="text/css" href="/static/css/add-event.css">
-
-<form action="/events/add" method="POST" enctype="multipart/form-data">
+<form action="/programs/add" method="POST" enctype="multipart/form-data">
     <span>{{form.errmessage}}</span>
-    <div class="addevent-container">
+    <div class="addProgram-container">
         <input name="title"
                 maxlength="255"
                 type="text"
@@ -17,13 +15,7 @@
                 cols="30"
                 maxlength="2048"
                 rows="10"
-                placeholder="{{__ 'Event'}}*">{{form.message}}</textarea>
-        <label>{{__ 'photo'}}</label>
-        <div id="photos-preview">
-        </div>
-        <input id="photo-temp" type="file">
-        <input id="photos" hidden name="photos" type="file" multiple>
+                placeholder="{{__ 'Program'}}*">{{form.message}}</textarea>
         <button type="submit">{{__ 'create'}}</button>
     </div>
 </form>
-<script type="application/javascript" src="/static/js/photos.js"></script>

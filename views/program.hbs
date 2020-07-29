@@ -1,0 +1,10 @@
+<div>
+    <a><p>{{Programs.title}}</p></a>
+    {{#if isAdmin}}
+        <a href="/programs/delete/{{Programs.id}}">{{__ 'delete'}}</a>
+    {{/if}}
+    <p>{{#formatTime Programs.publishDate}}{{/formatTime}}</p>
+    <p>{{Programs.messageShort}}</p>
+    <p>{{Programs.message}}</p>
+    <a href="{{uriWithLocale 'programs'}}">{{__ 'back'}}</a>
+</div>
