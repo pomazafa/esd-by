@@ -1,0 +1,22 @@
+<div>
+    {{#if isAdmin}}
+        <a href="/library/addCategory">{{__ 'addCategory'}}</a>
+    {{/if}}
+    {{#if Categories.0.id}}
+        {{#each Categories}}
+            <div>
+                <p>{{this.title}}</p>
+            </div>
+            {{#each this.Subcategories}}
+                <div>
+                    <p>{{this.title}}</p>
+                </div>
+            {{/each}}
+            {{#if ../isAdmin}}
+                <a href="/library/addSubcategory/{{this.id}}">{{__ 'addSubcategory'}}</a>
+            {{/if}}
+        {{/each}}
+    {{else}}
+        <p>{{__ 'noCategories'}}</p>
+    {{/if}}
+</div>
