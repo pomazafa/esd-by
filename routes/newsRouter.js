@@ -5,7 +5,7 @@ const fileUploadUtil = require('../util/fileUploadUtil');
 
 newsRouter.get("/", newsController.index);
 newsRouter.get("/add/", newsController.addget);
-newsRouter.post("/add", fileUploadUtil.multerMw.single('photo'), newsController.addpost);
+newsRouter.post("/add", fileUploadUtil.multerMw("./public/images/uploads").single('photo'), newsController.addpost);
 newsRouter.get("/delete/:id", newsController.delete);
 newsRouter.get("/:id/", newsController.getNew);
 

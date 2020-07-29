@@ -12,8 +12,8 @@
     </div>
     {{#if ../isAdmin}}
     <form action="/library/addCategoryDoc/{{this.id}}" method="POST">
-        <input type="file">
         <input name="title" maxlength="255" type="text" placeholder="{{__ 'File'}}*">
+        <input type="file" name="file">
         <button type="submit">{{__ 'addFile'}}</button>
     </form>
     {{/if}}
@@ -21,11 +21,14 @@
     <div>
         <p>{{this.title}}</p>
     </div>
-     <form action="/library/addSubcategoryDoc/{{../this.id}}/{{this.id}}" method="POST">
-        <input type="file">
+    <form action="/library/addSubcategoryDoc/{{this.id}}" method="POST">
         <input name="title" maxlength="255" type="text" placeholder="{{__ 'File'}}*">
+        <input type="file" name="file">
         <button type="submit">{{__ 'addFile'}}</button>
     </form>
+    {{/each}}
+    {{#each SubcategoryDocs}}
+    <a>{{this.title}}</a>
     {{/each}}
     {{#if ../isAdmin}}
     <form action="/library/addSubcategory/{{this.id}}" method="POST">

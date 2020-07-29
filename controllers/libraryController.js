@@ -77,11 +77,23 @@ exports.addSubcategory = async function (request, response) {
 };
 
 exports.addCategoryDoc = async function (request, response) {
-
+  const title = request.body.title;
+  const id = request.params.CategoryId;
+  CategoryDoc.create({
+    path: request.file ? request.file.filename : null,
+    title: title,
+    CategoryId: id
+  })
   response.redirect(i18nUtil.urlWithLocale('library'));
 };
 
 exports.addSubcategoryDoc = async function (request, response) {
-
+  const title = request.body.title;
+  const scid = request.params.SubcategoryId;
+  SubcategoryDoc.create({
+    path: request.file ? request.file.filename : null,
+    title: title,
+    SubcategoryId: scid
+  })
   response.redirect(i18nUtil.urlWithLocale('library'));
 };

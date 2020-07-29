@@ -163,9 +163,9 @@
 	"addCategory": "Добавить пункт",
 	"addSubcategory": "Добавить подпункт",
 	"addFile": "Добавить файл",
-	"logoPath": "/static/images/logo.png",
+	"logoPath": "/static/images/logoru.jpg",
 	"mainpage": "Главная",
 	"tasks": "Цели и задачи",
 	"login": "Войти",
-	"Braslav gymnasium": "Braslav gymnasium"
+	"Braslav gymnasium": "Браславская гимназия"
 }

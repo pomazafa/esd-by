@@ -5,7 +5,7 @@ const fileUploadUtil = require('../util/fileUploadUtil');
 
 projectsRouter.get("/", projectsController.index);
 projectsRouter.get("/add/", projectsController.addget);
-projectsRouter.post("/add", fileUploadUtil.multerMw.single('photo'), projectsController.addpost);
+projectsRouter.post("/add", fileUploadUtil.multerMw("./public/images/uploads").single('photo'), projectsController.addpost);
 projectsRouter.get("/delete/:id", projectsController.delete);
 projectsRouter.get("/:id/", projectsController.getProject);
 
