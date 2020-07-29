@@ -1,0 +1,61 @@
+<header class="header">
+    <link rel="stylesheet" type="text/css" href="/static/css/header.css" />
+        <div class="container">
+            <div class="logo_container container-column">
+                <a href="/">
+                     <img src="/static/images/logoru.png" alt="Главная">
+                </a>
+            </div>
+            <nav class="head-nav container-column">
+                <div class="head-topmenu">
+                    <div class="head-topmenu-left">
+                        <a class="head-menu" href="{{switchLocaleUri 'ru' req.originalUrl}}">Русский</a>
+                        <a class="head-menu" href="{{switchLocaleUri 'en' req.originalUrl}}">English</a>
+                    </div>
+                    <div class="head-topmenu-right">
+                        {{#unless req.user}}
+                            <a href="{{uriWithLocale 'login'}}">
+                                <li><span>{{__ 'login'}}</span></li>
+                            </a>
+                        {{else}}
+                            <a href="/logout">
+                                <li><span>{{__ 'logout'}}</span></li>
+                            </a>
+                        {{/unless}}
+                    </div>
+                </div>
+                
+                <div class="clearfix"></div>
+                <ul class="topmenu">
+                        <li class="menuabout">
+                        <a class="head-menu" href="{{uriWithLocale 'about'}}" class="active">{{__ 'about'}} </a>
+                            <ul class="submenu">
+                                <li><a class="head-menu" href="{{uriWithLocale 'about#about'}}">{{__ 'aboutAssociation'}}</a></li>
+                                <li><a class="head-menu" href="{{uriWithLocale 'about#tasks'}}">{{__ 'tasks'}}</a></li>
+                                <li><a class="head-menu" href="{{uriWithLocale 'about#leadership'}}">{{__ 'leadership'}}</a></li>
+                                <li><a class="head-menu" href="{{uriWithLocale 'about#history'}}">{{__ 'history'}}</a></li>
+                                <li><a class="head-menu" href="{{uriWithLocale 'about#structure'}}">{{__ 'structure'}}</a></li>
+                                <li><a class="head-menu" href="{{uriWithLocale 'about#members'}}">{{__ 'members'}}</a></li>
+                                <li><a class="head-menu" href="{{uriWithLocale 'about#resourses'}}">{{__ 'centers'}}</a></li>
+                                <li><a class="head-menu" href="{{uriWithLocale 'about#partners'}}">{{__ 'partners'}}</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="{{uriWithLocale 'news'}}">{{__ 'news'}}</a>
+                        </li>
+                        <li>
+                            <a href="{{uriWithLocale 'events'}}">{{__ 'events'}}</a>
+                        </li>
+                        <li>
+                            <a href="{{uriWithLocale 'programs'}}">{{__ 'programs'}}</a>
+                        </li>
+                        <li>
+                            <a href="{{uriWithLocale 'projects'}}">{{__ 'projects'}}</a>
+                        </li>
+                        <li>
+                            <a href="{{uriWithLocale 'library'}}">{{__ 'library'}}</a>
+                        </li>
+                </ul>
+            </nav>
+        </div>
+</header>

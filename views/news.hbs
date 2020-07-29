@@ -1,0 +1,16 @@
+<div>
+    {{#if isAdmin}}
+        <a href="/news/add">{{__ 'add'}}</a>
+    {{/if}}
+    {{#if News.0.id}}
+        {{#each News}}
+            <div>
+                <a href="{{uriWithLocale 'news' this.id }}"><p>{{this.title}}</p></a>
+                <p>{{#formatTime this.newDate}}{{/formatTime}}</p>
+                <p>{{this.messageShort}}</p>
+            </div>
+        {{/each}}
+    {{else}}
+        <p>{{__ 'noNews'}}</p>
+    {{/if}}
+</div>

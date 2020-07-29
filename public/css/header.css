@@ -1,0 +1,129 @@
+*{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  font-family: Roboto, Verdana, sans-serif;
+  scroll-behavior: smooth;
+
+}
+.header{
+  border-bottom: 1px solid #C8D090;;
+  scroll-behavior: smooth;
+}
+.container {
+  width: 100%;
+  max-width: 1024px;
+  padding: 15px;
+  margin: 0 auto;
+  display: flex;
+
+}
+.container-column:first-child{
+  flex: 0 0 20%;
+  overflow: hidden;
+}
+.container-column:last-child{
+  flex: 0 0 79%;
+  padding-left: 1%;
+}
+.head-nav{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.head-topmenu-left{
+  width: 50%;
+  float: left;
+}
+.head-topmenu-right{
+  width: 50%;
+  text-align: right;
+  float: right;
+}
+.logo {
+  float: left;
+}
+.logo_container  img{
+ width: 100%;
+}
+.topmenu{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+}
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+nav li {
+  display: inline-block; 
+}
+.container:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+nav a {
+  text-decoration: none;
+  line-height: 38px;
+}
+
+.submenu{
+  position: absolute ;
+  z-index: 2;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+  background-color: gainsboro;
+  opacity: 0;
+  width: 180px;
+}
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  20% { opacity: 0; }
+  40% { opacity: 0.3; }
+  60% { opacity: 0.5; }
+  80% { opacity: 0.9; }
+  100% { opacity: 1; }
+}
+.menuabout{
+  position: relative;
+}
+.menuabout:hover .submenu{
+  display: flex ;
+  opacity: 1;
+  animation-name: fadeIn;
+  animation-duration: 0.3s;
+}
+
+a {
+  text-decoration:none;
+  color: black;
+  transition: all .3s cubic-bezier(.2, 0, 0, 1);
+  z-index: 1;
+}
+a:after {
+    content: '';
+    background-color: black;
+    transition: all .3s cubic-bezier(.2, 0, 0, 1);
+    transform-origin: bottom center;
+    z-index: -1;
+    font-size: 14px;
+  }
+  
+a:hover {
+    color: green;
+    font-size: 18px;
+}
+  

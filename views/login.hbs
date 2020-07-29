@@ -1,0 +1,14 @@
+<form action="/authenticate" method="POST">
+    <span>{{form.message}}</span>
+    <div>
+        <input name="username"
+                maxlength="255"
+                type="text"
+                placeholder="{{__ 'userName'}}*"
+                value="{{form.username}}">
+    </div>
+    <div class="form-group">
+        <input name="password" type="password" placeholder="{{__ 'password'}}*">
+    </div>
+    <button id="authenticate_sumbit" type="submit">{{__ 'login'}}</button>
+</form>
