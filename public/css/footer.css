@@ -5,12 +5,13 @@
     text-decoration: none;
   }
   .footer{
+    border-top: 1px solid #C8D090;
     width: 100vw;
     display: block;
     overflow: hidden;
     padding: 40px 0;
     box-sizing: border-box;
-    background-color: #18181a;
+    background-color: #cbe3cb;
   }
   .inner_footer{
     display: block;
@@ -27,7 +28,7 @@
   
   .inner_footer .logo_container h1{
     height: 100%;
-    color: white;
+    color: black;
     vertical-align: middle;
     font-family: 'century gothic';
     font-size: 32px;
@@ -55,7 +56,7 @@
   .inner_footer .footer_third h1{
     font-family: 'century gothic';
     font-size: 22px;
-    color: white;
+    color: black;
     display: block;
     width: 100%;
     margin-bottom: 20px;
@@ -64,7 +65,7 @@
     font-family: 'century gothic';
     font-size: 18px;
     font-weight: 200;
-    color: white;
+    color: black;
     display: block;
     width: 100%;
     padding-bottom: 5px;

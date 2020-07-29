@@ -14,11 +14,11 @@
                     </div>
                     <div class="head-topmenu-right">
                         {{#unless req.user}}
-                            <a href="{{uriWithLocale 'login'}}">
+                            <a class="head-menu" href="{{uriWithLocale 'login'}}">
                                 <li><span>{{__ 'login'}}</span></li>
                             </a>
                         {{else}}
-                            <a href="/logout">
+                            <a class="head-menu" href="/logout">
                                 <li><span>{{__ 'logout'}}</span></li>
                             </a>
                         {{/unless}}
@@ -41,19 +41,19 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="{{uriWithLocale 'news'}}">{{__ 'news'}}</a>
+                            <a class="head-menu" href="{{uriWithLocale 'news'}}">{{__ 'news'}}</a>
                         </li>
                         <li>
-                            <a href="{{uriWithLocale 'events'}}">{{__ 'events'}}</a>
+                            <a class="head-menu" href="{{uriWithLocale 'events'}}">{{__ 'events'}}</a>
                         </li>
                         <li>
-                            <a href="{{uriWithLocale 'programs'}}">{{__ 'programs'}}</a>
+                            <a class="head-menu" href="{{uriWithLocale 'programs'}}">{{__ 'programs'}}</a>
                         </li>
                         <li>
-                            <a href="{{uriWithLocale 'projects'}}">{{__ 'projects'}}</a>
+                            <a class="head-menu" href="{{uriWithLocale 'projects'}}">{{__ 'projects'}}</a>
                         </li>
                         <li>
-                            <a href="{{uriWithLocale 'library'}}">{{__ 'library'}}</a>
+                            <a class="head-menu" href="{{uriWithLocale 'library'}}">{{__ 'library'}}</a>
                         </li>
                 </ul>
             </nav>
