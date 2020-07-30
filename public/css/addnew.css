@@ -24,6 +24,11 @@
     max-width: 530px;
     margin-bottom: 20px;
 }
+#photos{
+    width: 100%;
+    max-width: 530px;
+    margin-bottom: 20px;
+}
 .addnew-btn{
     width: 100px;
     display: block;
@@ -55,4 +60,7 @@
 }
 .addnew-area.large{
     height: 250px;
+}
+span{
+    text-align: center;
 }

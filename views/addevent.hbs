@@ -1,19 +1,19 @@
-<link rel="stylesheet" type="text/css" href="/static/css/add-event.css">
-
+<link rel="stylesheet" type="text/css" href="/static/css/addnew.css" />
 <form action="/events/add" method="POST" enctype="multipart/form-data">
     <span>{{form.errmessage}}</span>
-    <div class="addevent-container">
-        <input name="title"
+    <div class="template-container">
+            <div class="addnew-container">
+                    <input class="addnew-input" name="title"
                 maxlength="255"
                 type="text"
                 placeholder="{{__ 'title'}}*"
                 value="{{form.title}}">
-        <textarea name="messageShort"
+        <textarea class="addnew-area " name="messageShort"
                 cols="30"
                 maxlength="255"
                 rows="10"
                 placeholder="{{__ 'shortDescription'}}">{{form.messageShort}}</textarea>
-        <textarea name="message"
+        <textarea class="addnew-area large"name="message"
                 cols="30"
                 maxlength="2048"
                 rows="10"
@@ -21,9 +21,10 @@
         <label>{{__ 'photo'}}</label>
         <div id="photos-preview">
         </div>
-        <input id="photo-temp" type="file">
-        <input id="photos" hidden name="photos" type="file" multiple>
-        <button type="submit">{{__ 'create'}}</button>
+        <input class="addnew-inputphoto" type="file">
+        <button class="addnew-btn" type="submit">{{__ 'create'}}</button>
+            </div>
+        
     </div>
 </form>
 <script type="application/javascript" src="/static/js/photos.js"></script>

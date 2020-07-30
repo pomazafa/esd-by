@@ -196,7 +196,7 @@ a:hover{
   margin-top: 20px;
 }
 .partner-item:first-child{
-  margin: 0;
+  margin: 20px;
 }
 .partner-item-block{
   display: flex;
@@ -228,4 +228,5 @@ a:hover{
 }
 .partner-reverse{
   flex-direction: row-reverse;
+  margin-top: 20px;
 }
