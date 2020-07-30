@@ -19,7 +19,12 @@ const translateLibrary = async library => {
 
 exports.index = async function (request, response) {
   const library = await Category.findAll({
-    include: [Subcategory]
+    include: [{
+      model: Subcategory,
+      include: [SubcategoryDoc],
+    }, {
+      model: CategoryDoc
+    }],
   });
 
   await asyncForEach(library, async library => {
