@@ -1,10 +1,13 @@
-<div>
+ <link rel="stylesheet" type="text/css" href="/static/css/news.css" />
+<div class="template-container">
     {{#if isAdmin}}
-        <a href="/news/add">{{__ 'add'}}</a>
+        <div class="news-btn-container">
+            <a href="/news/add">{{__ 'add'}}</a>
+        </div>
     {{/if}}
     {{#if News.0.id}}
         {{#each News}}
-            <div>
+            <div class="news-block">  
                 <a href="{{uriWithLocale 'news' this.id }}"><p>{{this.title}}</p></a>
                 <p>{{#formatTime this.newDate}}{{/formatTime}}</p>
                 <p>{{this.messageShort}}</p>
