@@ -1,5 +1,10 @@
 {
 	"login": "Login",
+	"Login": "Sign in",
+	"AddNewTitle": "Adding news",
+	"AddEventTitle": "Adding event",
+	"AddProgramTitle": "Adding program",
+	"AddProjectTitle": "Adding project",
 	"logout": "Logout",
 	"about": "About",
 	"news": "News",

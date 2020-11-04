@@ -1,32 +1,21 @@
 <link rel="stylesheet" type="text/css" href="/static/css/addnew.css" />
 <form action="/news/add" method="POST" enctype="multipart/form-data">
-    <span>{{form.errmessage}}</span>
-    <div class="template-container">
-            <div class="addnew-container">
-        <input class="addnew-input" name="title"
-                maxlength="255"
-                type="text"
-                placeholder="{{__ 'title'}}*"
-                value="{{form.title}}">
-        <textarea class="addnew-area " name="messageShort"
-                cols="30"
-                maxlength="255"
-                rows="10"
-                placeholder="{{__ 'shortDescription'}}">{{form.messageShort}}</textarea>
-        <textarea class="addnew-area large" name="message"
-                cols="30"
-                maxlength="2048"
-                rows="10"
-                placeholder="{{__ 'News'}}*">{{form.message}}</textarea>
-        <label>{{__ 'photo'}}</label>
-        <input class="addnew-inputphoto" name="photo" type="file">
-        <input class="addnew-input" name="photoDescription"
-                maxlength="255"
-                type="text"
-                placeholder="{{__ 'photoDescription'}}"
-                value="{{form.photoDescription}}">
-        <button class="addnew-btn" type="submit">{{__ 'create'}}</button>
-            </div>
-        
-    </div>
+        <h1 class="form__title">{{__ 'AddNewTitle'}}</h1>
+        <span>{{form.errmessage}}</span>
+        <div class="template-container">
+                <div class="form-input__container">
+                        <input class="form__text-input" name="title" maxlength="255" type="text"
+                                placeholder="{{__ 'title'}}*" value="{{form.title}}">
+                        <textarea class="form__textarea " name="messageShort" cols="30" maxlength="255" rows="10"
+                                placeholder="{{__ 'shortDescription'}}">{{form.messageShort}}</textarea>
+                        <textarea class="form__textarea large" name="message" cols="30" maxlength="2048" rows="10"
+                                placeholder="{{__ 'News'}}*">{{form.message}}</textarea>
+                        <label>{{__ 'photo'}}</label>
+                        <input class="form__photo-input" name="photo" type="file">
+                        <input class="form__text-input" name="photoDescription" maxlength="255" type="text"
+                                placeholder="{{__ 'photoDescription'}}" value="{{form.photoDescription}}">
+                        <button class="form__button" type="submit">{{__ 'create'}}</button>
+                </div>
+
+        </div>
 </form>

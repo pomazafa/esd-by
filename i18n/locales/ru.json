@@ -1,5 +1,10 @@
 {
 	"InstitutionsOfHigherEducation": "Учреждения высшего образования",
+	"Login": "Авторизация",
+	"AddNewTitle": "Добавление новости",
+	"AddEventTitle": "Добавление события",
+	"AddProgramTitle": "Добавление программы",
+	"AddProjectTitle": "Добавление проекта",
 	"MaksimTankBelarusianStatePedagogicalUniversity": "Белорусский государственный педагогический университет имени Максима Танка",
 	"BelarusianStateUniversityofCultureandArts": "Белорусский государственный университет культуры и искусств",
 	"AdultSupplementaryEducationInstitutions": "Учреждения дополнительного образования взрослых",

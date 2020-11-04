@@ -1,30 +1,22 @@
 <link rel="stylesheet" type="text/css" href="/static/css/addnew.css" />
 <form action="/events/add" method="POST" enctype="multipart/form-data">
-    <span>{{form.errmessage}}</span>
-    <div class="template-container">
-            <div class="addnew-container">
-                    <input class="addnew-input" name="title"
-                maxlength="255"
-                type="text"
-                placeholder="{{__ 'title'}}*"
-                value="{{form.title}}">
-        <textarea class="addnew-area " name="messageShort"
-                cols="30"
-                maxlength="255"
-                rows="10"
-                placeholder="{{__ 'shortDescription'}}">{{form.messageShort}}</textarea>
-        <textarea class="addnew-area large"name="message"
-                cols="30"
-                maxlength="2048"
-                rows="10"
-                placeholder="{{__ 'Event'}}*">{{form.message}}</textarea>
-        <label>{{__ 'photo'}}</label>
-        <div id="photos-preview">
+        <h1 class="form__title">{{__ 'AddEventTitle'}}</h1>
+        <span>{{form.errmessage}}</span>
+        <div class="template-container">
+                <div class="form-input__container">
+                        <input class="form__text-input" name="title" maxlength="255" type="text"
+                                placeholder="{{__ 'title'}}*" value="{{form.title}}">
+                        <textarea class="form__textarea " name="messageShort" cols="30" maxlength="255" rows="10"
+                                placeholder="{{__ 'shortDescription'}}">{{form.messageShort}}</textarea>
+                        <textarea class="form__textarea large" name="message" cols="30" maxlength="2048" rows="10"
+                                placeholder="{{__ 'Event'}}*">{{form.message}}</textarea>
+                        <label>{{__ 'photo'}}</label>
+                        <div id="photos-preview">
+                        </div>
+                        <input class="form__photo-input" type="file">
+                        <button class="form__button" type="submit">{{__ 'create'}}</button>
+                </div>
+
         </div>
-        <input class="addnew-inputphoto" type="file">
-        <button class="addnew-btn" type="submit">{{__ 'create'}}</button>
-            </div>
-        
-    </div>
 </form>
 <script type="application/javascript" src="/static/js/photos.js"></script>

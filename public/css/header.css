@@ -121,11 +121,11 @@ nav a {
     transition: all .3s cubic-bezier(.2, 0, 0, 1);
     transform-origin: bottom center;
     z-index: -1;
-    font-size: 14px;
+    font-size: 16px;
   }
   
 .head-menu:hover{
-    color: green;
+    color: #000;
     font-size: 18px;
 }
   
