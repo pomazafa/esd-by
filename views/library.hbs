@@ -1,48 +1,57 @@
 <div>
     {{#if isAdmin}}
-        <form action="/library/addCategory" method="POST">
-            <input name="title" maxlength="255" type="text" placeholder="{{__ 'Category'}}*">
-            <button type="submit">{{__ 'addCategory'}}</button>
-        </form>
+    <form action="/library/addCategory" method="POST">
+        <div class="form-input__container">
+            <input class="form__text-input" name="title" maxlength="255" type="text" placeholder="{{__ 'Category'}}*">
+            <button class="form__button" type="submit">{{__ 'addCategory'}}</button>
+        </div>
+    </form>
     {{/if}}
     {{#if Library.0.id}}
-        {{#each Library}}
-            <div>
-                <p>{{this.title}}</p>
-                {{#if ../isAdmin}}
-                    <form action="/library/addCategoryDoc/{{this.id}}" method="POST" enctype="multipart/form-data">
-                        <input name="title" maxlength="255" type="text" placeholder="{{__ 'File'}}*">
-                        <input type="file" name="file">
-                        <button type="submit">{{__ 'addFile'}}</button>
-                    </form>
-                {{/if}}
-                {{#each this.CategoryDocs}}
-                        <a href="/static/files/uploads/{{this.path}}">{{this.title}}</a>
-                {{/each}}
-                </div>
-                {{#if ../isAdmin}}
-                    <form action="/library/addSubcategory/{{this.id}}" method="POST">
-                        <input name="title" maxlength="255" type="text" placeholder="{{__ 'Subcategory'}}*">
-                        <button type="submit">{{__ 'addSubcategory'}}</button>
-                    </form>
-                {{/if}}
-                {{#each this.Subcategories}}
-                    <div>
-                        <p>{{this.title}}</p>
-                    </div>
-                    {{#if ../../isAdmin}}
-                        <form action="/library/addSubcategoryDoc/{{this.id}}" method="POST" enctype="multipart/form-data">
-                            <input name="title" maxlength="255" type="text" placeholder="{{__ 'File'}}*">
-                            <input type="file" name="file">
-                            <button type="submit">{{__ 'addFile'}}</button>
-                        </form>
-                    {{/if}}
-                    {{#each this.SubcategoryDocs}}
-                        <a href="/static/files/uploads/{{this.path}}">{{this.title}}</a>
-                    {{/each}}
-                {{/each}}
-            {{/each}}
-        {{else}}
-        <p>{{__ 'noCategories'}}</p>
+    {{#each Library}}
+    <div>
+        <h1>{{this.title}}</h1>
+        {{#if ../isAdmin}}
+        <form action="/library/addCategoryDoc/{{this.id}}" method="POST" enctype="multipart/form-data">
+            <div class="form-input__container">
+                <input class="form__text-input" name="title" maxlength="255" type="text" placeholder="{{__ 'File'}}*">
+                <input type="file" name="file">
+                <button class="form__button" type="submit">{{__ 'addFile'}}</button>
+            </div>
+        </form>
+        {{/if}}
+        {{#each this.CategoryDocs}}
+        <a href="/static/files/uploads/{{this.path}}">{{this.title}}</a>
+        {{/each}}
+    </div>
+    {{#if ../isAdmin}}
+    <form action="/library/addSubcategory/{{this.id}}" method="POST">
+        <div class="form-input__container">
+            <input class="form__text-input" name="title" maxlength="255" type="text"
+                placeholder="{{__ 'Subcategory'}}*">
+            <button class="form__button" type="submit">{{__ 'addSubcategory'}}</button>
+        </div>
+    </form>
+    {{/if}}
+    {{#each this.Subcategories}}
+    <div>
+        <h2>{{this.title}}</h2>
+    </div>
+    {{#if ../../isAdmin}}
+    <form action="/library/addSubcategoryDoc/{{this.id}}" method="POST" enctype="multipart/form-data">
+        <div class="form-input__container">
+            <input class="form__text-input" name="title" maxlength="255" type="text" placeholder="{{__ 'File'}}*">
+            <input type="file" name="file">
+            <button class="form__button" type="submit">{{__ 'addFile'}}</button>
+        </div>
+    </form>
+    {{/if}}
+    {{#each this.SubcategoryDocs}}
+    <a href="/static/files/uploads/{{this.path}}">{{this.title}}</a>
+    {{/each}}
+    {{/each}}
+    {{/each}}
+    {{else}}
+    <p>{{__ 'noCategories'}}</p>
     {{/if}}
 </div>

@@ -31,15 +31,18 @@
     margin-bottom: 20px;
 }
 .form__button{
-    width: 100px;
-    display: block;
+    width: auto;
     text-align: center;
-    height: 30px;
     line-height: 30px;
     border-radius: 10px;
     border: 1px solid gray;
-    box-shadow: 0 10px 6px -6px #777;
     outline: none;
+    cursor: pointer;
+    padding: 10px;
+    display: inline-block;
+    margin: 15px;
+    letter-spacing: 1px;
+    font-weight: 700;
 }
 .form__button:hover{
     border:2px solid #cbe3cb;
