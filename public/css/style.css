@@ -5,3 +5,6 @@
     margin: 0 auto;
 }
 
+.wrapper {
+    min-height: calc(100vh - 234px);
+}

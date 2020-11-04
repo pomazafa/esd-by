@@ -3,17 +3,19 @@
 
 <head>
     <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
-    <link rel="stylesheet" type="text/css" href="/static/css/all.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/all.css" />
     <link rel="shortcut icon" href="/static/images/icon.png" type="image/png">
     <title>{{Title}}</title>
 
 </head>
 
 <body>
-    {{>header}}
-    <main>
-    {{{body}}}
-    </main>
+    <div class="wrapper">
+        {{>header}}
+        <main>
+            {{{body}}}
+        </main>
+    </div>
     {{>footer}}
 </body>
 <html>

@@ -7,18 +7,14 @@
   }
   .footer{
     border-top: 1px solid #C8D090;
-    width: 100vw;
-    display: block;
-    overflow: hidden;
     padding: 40px 0;
     box-sizing: border-box;
     background-color: #cbe3cb;
-  }
+    height: 234px;
+    }
   .inner_footer{
-    display: block;
     margin: 0 auto;
     width: 1024px;
-    height: 100%
   }
   .inner_footer .logo_container{
     width: 35%;
