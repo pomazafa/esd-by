@@ -1,13 +1,15 @@
-<div>
-    <a><p>{{News.title}}</p></a>
+<div class="content-wrapper">
+    <a>
+        <p>{{News.title}}</p>
+    </a>
     {{#if isAdmin}}
-        <a href="/news/delete/{{News.id}}">{{__ 'delete'}}</a>
+    <a class="content__link" href="/news/delete/{{News.id}}">{{__ 'delete'}}</a>
     {{/if}}
     <p>{{#formatTime News.newDate}}{{/formatTime}}</p>
     <p>{{News.messageShort}}</p>
     <p>{{News.message}}</p>
     {{#if News.photoURL}}
-        <img src="/static/images/uploads/{{News.photoURL}}" alt={{News.photoDescription}}/>
+    <img src="/static/images/uploads/{{News.photoURL}}" alt={{News.photoDescription}} />
     {{/if}}
-    <a href="{{uriWithLocale 'news'}}">{{__ 'back'}}</a>
+    <a class="content__link" href="{{uriWithLocale 'news'}}">{{__ 'back'}}</a>
 </div>

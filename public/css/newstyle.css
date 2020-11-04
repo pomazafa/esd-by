@@ -76,3 +76,38 @@ span{
 form {
     margin: 30px;
 }
+
+.content-wrapper {
+    width: 80%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.content__link {
+    display: inline-block;
+    text-decoration: none;
+    letter-spacing: 1px;
+    margin: 15px 25px;
+    padding: 10px 20px;
+    font-size: 18px;
+    transition: 0.4s ease-in-out;
+    color: green;
+    background: linear-gradient(to right, green 0, green) bottom no-repeat;
+    background-size: 70% 4px;
+}
+
+.content__link:hover {
+    background-size: 80%;
+}
+
+.content__file-upload{
+
+}
+
+.content__item{
+    float: left;
+    margin: 0 1.5%;
+    width: 30%;
+    word-wrap: break-word;
+}

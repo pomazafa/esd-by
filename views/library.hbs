@@ -1,4 +1,4 @@
-<div>
+<div class="content-wrapper">
     {{#if isAdmin}}
     <form action="/library/addCategory" method="POST">
         <div class="form-input__container">
@@ -21,7 +21,7 @@
         </form>
         {{/if}}
         {{#each this.CategoryDocs}}
-        <a href="/static/files/uploads/{{this.path}}">{{this.title}}</a>
+        <a class="content__link content__file-upload" href="/static/files/uploads/{{this.path}}">{{this.title}}</a>
         {{/each}}
     </div>
     {{#if ../isAdmin}}
@@ -47,7 +47,7 @@
     </form>
     {{/if}}
     {{#each this.SubcategoryDocs}}
-    <a href="/static/files/uploads/{{this.path}}">{{this.title}}</a>
+    <a class="content__link content__file-upload" href="/static/files/uploads/{{this.path}}">{{this.title}}</a>
     {{/each}}
     {{/each}}
     {{/each}}

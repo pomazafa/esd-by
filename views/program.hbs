@@ -1,10 +1,12 @@
-<div>
-    <a><p>{{Programs.title}}</p></a>
+<div class="content-wrapper">
+    <a>
+        <p>{{Programs.title}}</p>
+    </a>
     {{#if isAdmin}}
-        <a href="/programs/delete/{{Programs.id}}">{{__ 'delete'}}</a>
+    <a class="content__link" href="/programs/delete/{{Programs.id}}">{{__ 'delete'}}</a>
     {{/if}}
     <p>{{#formatTime Programs.publishDate}}{{/formatTime}}</p>
     <p>{{Programs.messageShort}}</p>
     <p>{{Programs.message}}</p>
-    <a href="{{uriWithLocale 'programs'}}">{{__ 'back'}}</a>
+    <a class="content__link" href="{{uriWithLocale 'programs'}}">{{__ 'back'}}</a>
 </div>

@@ -1,20 +1,22 @@
 <link rel="stylesheet" type="text/css" href="/static/css/news.css" />
-<div class="template-container">
+<div class="content-wrapper">
     {{#if isAdmin}}
-     <div class="news-btn-container">
-         <a href="/projects/add">{{__ 'add'}}</a>
-     </div>
-        
+    <div class="news-btn-container">
+        <a class="content__link" href="/projects/add">{{__ 'add'}}</a>
+    </div>
+
     {{/if}}
     {{#if Projects.0.id}}
-        {{#each Projects}}
-          <div class="news-block">  
-                <a href="{{uriWithLocale 'projects' this.id }}"><p>{{this.title}}</p></a>
-                <p>{{#formatTime this.publishDate}}{{/formatTime}}</p>
-                <p>{{this.messageShort}}</p>
-            </div>
-        {{/each}}
+    {{#each Projects}}
+    <div class="content__item">
+        <a href="{{uriWithLocale 'projects' this.id }}">
+            <p>{{this.title}}</p>
+        </a>
+        <p>{{#formatTime this.publishDate}}{{/formatTime}}</p>
+        <p>{{this.messageShort}}</p>
+    </div>
+    {{/each}}
     {{else}}
-        <p>{{__ 'noProjects'}}</p>
+    <p>{{__ 'noProjects'}}</p>
     {{/if}}
 </div>

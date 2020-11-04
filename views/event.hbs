@@ -1,13 +1,15 @@
-<div>
-    <a><p>{{Events.title}}</p></a>
+<div class="content-wrapper">
+    <a>
+        <p>{{Events.title}}</p>
+    </a>
     {{#if isAdmin}}
-        <a href="/events/delete/{{Events.id}}">{{__ 'delete'}}</a>
+    <a class="content__link" href="/events/delete/{{Events.id}}">{{__ 'delete'}}</a>
     {{/if}}
     <p>{{#formatTime Events.publishDate}}{{/formatTime}}</p>
     <p>{{Events.descriptionShort}}</p>
     <p>{{Events.description}}</p>
     {{#each Events.Photos}}
-        <img src="/static/images/uploads/{{this.photoURL}}" alt={{this.photoDescription}}/>
+    <img src="/static/images/uploads/{{this.photoURL}}" alt={{this.photoDescription}} />
     {{/each}}
-    <a href="{{uriWithLocale 'events'}}">{{__ 'back'}}</a>
+    <a class="content__link" href="{{uriWithLocale 'events'}}">{{__ 'back'}}</a>
 </div>

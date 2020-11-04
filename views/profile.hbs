@@ -1,19 +1,14 @@
 <div>
-    <form action="/change" method="POST">
-        <span>{{Message}}</span>
-        <input name="name"
-                maxlength="255"
-                type="text"
-                placeholder="{{__ 'userLogin'}}"
-                value="{{User.name}}">
-        <input class="content__input"
-                name="password"
-                type="password"
-                placeholder="{{__ 'oldPassword'}}">
-        <input class="content__input"
-                name="passwordNew"
-                type="password"
-                placeholder="{{__ 'newPassword'}}">
-        <button type="submit">{{__ 'change'}}</button>
-    </form>
+        <form action="/change" method="POST">
+                <span>{{Message}}</span>
+                <div class="form-input__container">
+                        <input name="name" maxlength="255" type="text" placeholder="{{__ 'userLogin'}}"
+                                value="{{User.name}}">
+                        <input class="content__input" name="password" type="password"
+                                placeholder="{{__ 'oldPassword'}}">
+                        <input class="content__input" name="passwordNew" type="password"
+                                placeholder="{{__ 'newPassword'}}">
+                        <button type="submit">{{__ 'change'}}</button>
+                </div>
+        </form>
 </div>
