@@ -21,7 +21,8 @@
         </form>
         {{/if}}
         {{#each this.CategoryDocs}}
-        <a class="content__link content__file-upload" href="/static/files/uploads/{{this.path}}">{{this.title}}</a>
+        <a title="{{__ 'Download'}}" class="content__link content__file-upload"
+            href="/static/files/uploads/{{this.path}}">{{this.title}}</a>
         {{/each}}
     </div>
     {{#if ../isAdmin}}
@@ -47,7 +48,8 @@
     </form>
     {{/if}}
     {{#each this.SubcategoryDocs}}
-    <a class="content__link content__file-upload" href="/static/files/uploads/{{this.path}}">{{this.title}}</a>
+    <a title="{{__ 'Download'}}" class="content__link content__file-upload"
+        href="/static/files/uploads/{{this.path}}">{{this.title}}</a>
     {{/each}}
     {{/each}}
     {{/each}}

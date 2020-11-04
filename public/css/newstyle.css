@@ -102,7 +102,10 @@ form {
 }
 
 .content__file-upload{
-
+    background: #7bc74d;
+    padding: 19px;
+    color: #fff;
+    text-decoration: underline;
 }
 
 .content__item{
