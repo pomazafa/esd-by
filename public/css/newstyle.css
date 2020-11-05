@@ -89,8 +89,7 @@ form {
     display: inline-block;
     text-decoration: none;
     letter-spacing: 1px;
-    margin: 15px 25px;
-    padding: 10px 20px;
+    padding: 0px 10px 10px 0px;
     font-size: 18px;
     transition: 0.4s ease-in-out;
     color: green;
@@ -112,8 +111,13 @@ form {
 .content__item{
     float: left;
     margin: 0 1.5%;
-    width: 30%;
+    width: 40%;
     word-wrap: break-word;
+    border: 1px  solid gray;
+    border-radius: 15px;
+    padding: 5px 15px;
+    margin-bottom: 15px;
+    overflow: hidden;
 }
 
 .content-items{
