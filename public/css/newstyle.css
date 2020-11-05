@@ -125,7 +125,7 @@ form {
 }
 
 .content__date {
-    font-family: Georgia,"Times New Roman",serif;
+    color:gray;
 	font-size: 14px;
 	line-height: 22px;
 	text-transform: uppercase;
