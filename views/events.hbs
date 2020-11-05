@@ -6,15 +6,17 @@
     </div>
     {{/if}}
     {{#if Events.0.id}}
-    {{#each Events}}
     <div class="content__items">
-        <a href="{{uriWithLocale 'events' this.id }}">
-            <p>{{this.title}}</p>
-        </a>
-        <p>{{#formatTime this.publishDate}}{{/formatTime}}</p>
-        <p>{{this.descriptionShort}}</p>
+        {{#each Events}}
+        <div class="content__item">
+            <a class="content__link" href="{{uriWithLocale 'events' this.id }}">
+                <p>{{this.title}}</p>
+            </a>
+            <p>{{this.descriptionShort}}</p>
+            <p class="content__date">{{#formatTime this.publishDate}}{{/formatTime}}</p>
+        </div>
+        {{/each}}
     </div>
-    {{/each}}
     {{else}}
     <p>{{__ 'noEvents'}}</p>
     {{/if}}

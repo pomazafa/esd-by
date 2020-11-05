@@ -26,15 +26,11 @@ app.engine("hbs", expressHbs({
             return options.inverse(this);
         },
         formatTime: function (myDate) {
-            var minute = myDate.getMinutes();
             var month = myDate.getMonth() + 1;
-            if (minute < 10) {
-                minute = "0" + minute;
-            }
             if (month < 10) {
                 month = "0" + month;
             }
-            return  myDate.getDate() + '.' + month + '.' + myDate.getFullYear()+ " " + myDate.getHours() + ":" + minute;
+            return  myDate.getDate() + '.' + month + '.' + myDate.getFullYear();
         },
       switchLocaleUri: (newLocale, uri) => {
         const rxLocale = /^\/(\w\w)\//i;
