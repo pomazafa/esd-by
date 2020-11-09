@@ -7,4 +7,5 @@
 
 .wrapper {
     min-height: calc(100vh - 234px);
+    overflow: hidden;
 }
