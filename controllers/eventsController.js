@@ -12,7 +12,7 @@ const { translate } = require('../util/tranlateUtil');
 let form = null;
 
 exports.index = async function (request, response) {
-  const events = await Event.findAll({ include: [Photo] });
+  const events = await Event.findAll({ include: [Photo], order: [['publishDate', 'DESC']] });
 
   await asyncForEach(events, async event => {
     await translateEvent(event);

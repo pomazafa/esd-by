@@ -10,7 +10,7 @@ const { translate } = require('../util/tranlateUtil');
 let form = null;
 
 exports.index = async function (request, response) {
-  const news = await New.findAll();
+  const news = await New.findAll({ order: [['newDate', 'DESC']]});
 
   await asyncForEach(news, async news => {
     await translateNews(news);

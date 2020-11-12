@@ -14,7 +14,7 @@ const {
   let form = null;
   
   exports.index = async function (request, response) {
-    const programs = await Program.findAll();
+    const programs = await Program.findAll({ order: [['publishDate', 'DESC']]});
   
     await asyncForEach(programs, async programs => {
       await translatePrograms(programs);
