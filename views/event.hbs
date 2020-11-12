@@ -1,15 +1,18 @@
 <div class="content-wrapper">
-    <a>
-        <p>{{Events.title}}</p>
-    </a>
     {{#if isAdmin}}
-    <a class="content__link" href="/events/delete/{{Events.id}}">{{__ 'delete'}}</a>
+    <div class="content__btn-containerr">
+        <a class="content__link" href="/events/delete/{{Events.id}}">{{__ 'delete'}}</a>
+    </div>
     {{/if}}
-    <p>{{#formatTime Events.publishDate}}{{/formatTime}}</p>
-    <p>{{Events.descriptionShort}}</p>
-    <p>{{Events.description}}</p>
-    {{#each Events.Photos}}
-    <img src="/static/images/uploads/{{this.photoURL}}" alt={{this.photoDescription}} />
-    {{/each}}
+    <p class="content__title">{{Events.title}}</p>
+    <p class="content__text">{{Events.description}}</p>
+    <div class="content__gallery">
+        {{#each Events.Photos}}
+        <p>
+            <img class="content__photo" src="/static/images/uploads/{{this.photoURL}}" alt={{this.photoDescription}} />
+        </p>
+        {{/each}}
+    </div>
+    <p class="content__date">{{#formatTime Events.publishDate}}{{/formatTime}}</p>
     <a class="content__link" href="{{uriWithLocale 'events'}}">{{__ 'back'}}</a>
 </div>

@@ -233,3 +233,6 @@ a:hover{
   flex-direction: row-reverse;
   margin-top: 20px;
 }
+p {
+  text-indent: 40px;
+}

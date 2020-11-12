@@ -140,3 +140,35 @@ form {
 main {
     padding: 10px;
 }
+
+.content__text {
+    font-size: 1.05rem;
+    line-height: 1.45;
+    text-indent: 40px;
+}
+
+.content__title {
+    font-size: 20px;
+    letter-spacing: 1px;
+    color: green;
+    text-indent: 70px;
+    text-transform: capitalize;
+}
+
+.content__gallery p{
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: top;
+    width: 180px;
+    margin-bottom: 10px;
+}
+
+.content__photo {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.content__btn-containerr{
+    text-align: right;
+    display: block;
+}

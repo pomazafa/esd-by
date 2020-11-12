@@ -1,15 +1,14 @@
 <div class="content-wrapper">
-    <a>
-        <p>{{Projects.title}}</p>
-    </a>
     {{#if isAdmin}}
-    <a class="content__link" href="/projects/delete/{{Projects.id}}">{{__ 'delete'}}</a>
+    <div class="content__btn-containerr">
+        <a class="content__link" href="/projects/delete/{{Projects.id}}">{{__ 'delete'}}</a>
+    </div>
     {{/if}}
-    <p>{{#formatTime Projects.publishDate}}{{/formatTime}}</p>
-    <p>{{Projects.messageShort}}</p>
-    <p>{{Projects.message}}</p>
+    <p class="content__title">{{Projects.title}}</p>
+    <p class="content__text">{{Projects.message}}</p>
     {{#if Projects.photoURL}}
-    <img src="/static/images/uploads/{{Projects.photoURL}}" alt={{Projects.photoDescription}} />
+    <img class="content__photo" src="/static/images/uploads/{{Projects.photoURL}}" alt={{Projects.photoDescription}} />
     {{/if}}
+    <p class="content__date">{{#formatTime Projects.publishDate}}{{/formatTime}}</p>
     <a class="content__link" href="{{uriWithLocale 'projects'}}">{{__ 'back'}}</a>
 </div>

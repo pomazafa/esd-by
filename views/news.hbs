@@ -1,7 +1,6 @@
-<link rel="stylesheet" type="text/css" href="/static/css/news.css" />
 <div class="content-wrapper">
     {{#if isAdmin}}
-    <div class="news-btn-container">
+    <div class="content__btn-containerr">
         <a class="content__link" href="/news/add">{{__ 'add'}}</a>
     </div>
     {{/if}}
@@ -10,7 +9,7 @@
         {{#each News}}
         <div class="content__item">
             <a class="content__link" href="{{uriWithLocale 'news' this.id }}">
-                <p class="content__text">{{this.title}}</p>
+                <p>{{this.title}}</p>
             </a>
             <p>{{this.messageShort}}</p>
             <p class="content__date">{{#formatTime this.newDate}}{{/formatTime}}</p>

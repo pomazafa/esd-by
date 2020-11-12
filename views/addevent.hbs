@@ -13,7 +13,8 @@
                         <label>{{__ 'photo'}}</label>
                         <div id="photos-preview">
                         </div>
-                        <input class="form__photo-input" type="file">
+                        <input id="photo-temp" class="form__photo-input" type="file">
+                        <input id="photos" hidden name="photos" type="file" multiple>
                         <button class="form__button" type="submit">{{__ 'create'}}</button>
                 </div>
         </div>
